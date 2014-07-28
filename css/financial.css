@@ -1,0 +1,77 @@
+/*
+	此样式文件专门为financial.php页面准备
+	by yanggl 20121016
+*/
+
+
+body { font-size:small; }
+
+#div_user_input_box, #div_latest_items_box, #div_summary_box, #div_quick_opration_box
+{
+	padding:20px 20px 20px 30px; 
+	border: 3px solid #dedede;
+    background-color:white;
+	
+	-moz-border-radius: 15px;      /* Gecko browsers */
+	-webkit-border-radius: 15px;   /* Webkit browsers */
+	border-radius:15px;            /* W3C syntax */
+	
+	-moz-box-shadow:10px 10px 10px gray;
+	-webkit-box-shadow:10px 10px 10px gray;
+	box-shadow:10px 10px 10px gray;
+}
+
+#div_user_input_box { width:300px; height:280px; float:left; margin-left:40px; }
+#div_summary_box { width:230px; height:280px; float:left; margin-left:20px; }
+#div_latest_items_box { width:630px; height:320px; margin-left:20px; margin-top:360px; clear:both; }
+#div_latest_items { height:200px; overflow:auto; margin-top:15px; }
+#div_quick_opration_box { width:500px; height:670px; background-color:#EBFCD2; }
+#div_config_opration_box { margin-top:-30px; }
+
+#div_money_type_box { height:30px; }
+#div_money_type_box span { cursor:pointer; }
+#div_money_amount_box { height:40px; }
+#txt_money { width:100px }
+#div_category_box { height:40px; width:250px; }
+#div_stat_type_box { height:40px; width:250px; }
+#div_remark_box { height:50px; }
+#div_cost_category_content_box, #div_income_category_content_box { display:inline-block; width:170px; }
+#div_stat_type_content_box { display:inline-block; }
+span.selected { color:Red; font-weight:bold; cursor:default; }
+/* #div_category_box span { cursor:pointer; } */
+#div_category_box select { width:104px; }
+#select_stat_type { width:104px; }
+#div_datetime_box { height:40px; }
+
+#txt_financial_remark { width:150px; resize:none; height:33px; }
+#div_remark_box label { vertical-align:top; }
+
+#div_submit_box { text-align:center; margin-top:10px; }
+#btn_submit { width:70px; height:30px; }
+
+#tbl_today_items tr:nth-child(odd) { background-color:#F7F7F7; }
+#tbl_today_items tr { height:25px; }
+#tbl_today_items tr:nth-child(1) { font-weight:bold; background-color:#eed8ae }
+
+#div_summary_box div { height:30px; }
+#div_summary_box div span, #div_summary_box div label { font-weight:bold; }
+#div_summary_box div:first-child span { color:Green;  }
+#div_summary_box div:nth-child(2) span { color:Red; }
+#div_summary_box div:nth-child(3) span { color:Green; }
+#div_summary_box div:nth-child(4) span { color:Red; }
+#div_summary_box div:nth-child(5) span { color:Blue; }
+#prg_month_budget { width:220px; height:30px; }
+#input_datetime { width:125px; }
+
+#div_latest_items_op_bar { margin-top:10px; margin-bottom:10px; }
+#div_latest_items_op_bar span { cursor:pointer; }
+#input_datetime2 { width:100px; }
+#div_latest_items_op_bar_datetime_box { display:inline-block; }
+
+#div_category_modify_box { margin-top:15px; }
+#div_plan_modify_box { margin-top:15px; }
+#tbl_category_items tr:first-child { font-weight:bold; }
+#input_month_cost_plan { width:80px; }
+
+button.ui-datepicker-current { display: none; }
+.selectedTr { background-color:#b7e9b5; }

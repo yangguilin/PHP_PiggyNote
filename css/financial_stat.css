@@ -1,0 +1,50 @@
+/*
+// financial statistic css file
+// by yanggl 20130318
+*/
+
+/*全局样式*/
+body { font-size:small; }
+a:link { text-decoration:none; }
+
+/*样式类*/
+div.splitLine { background-color:gray; height:1px; width:1220px; margin-top:15px; margin-bottom:30px; }
+div.splitLine2 { background-color:gray; height:1px; width:485px; margin-top:10px; }
+span.selected { color:Red; font-weight:bold; cursor:default; }
+tr.totalTr { font-weight:bold; color:darkred; }
+td.emptyTd { text-align:center; }
+tr.titleTr { font-weight:bold; background-color:#eed8ae; }
+table.firstTblInBox { margin-top:15px; }
+span.spanButton { cursor:pointer; }
+
+/*标签ID指定样式*/
+#div_quick_opration_box, #div_quick_detail_result_box
+{
+	padding:20px 20px 20px 30px; 
+	border: 3px solid #dedede;
+    background-color:white;
+	
+	-moz-border-radius: 15px;      /* Gecko browsers */
+	-webkit-border-radius: 15px;   /* Webkit browsers */
+	border-radius:15px;            /* W3C syntax */
+	
+	-moz-box-shadow:10px 10px 10px gray;
+	-webkit-box-shadow:10px 10px 10px gray;
+	box-shadow:10px 10px 10px gray;
+}
+
+#div_quick_opration_box { width:500px; height:670px; background-color:#EBFCD2; }
+#div_quick_detail_result_box { width:500px; height:670px; background-color:#EBFCD2; position:relative; float:right; top:-715px; left:-10px; }
+#div_cur_month_stat_box { display:; }
+#div_category_stat_box { display:none; }
+#div_big_data_stat_box { display:none; }
+#div_any_month_stat_box { display:none; }
+#div_any_year_stat_box { display:none; }
+
+#div_detail_notes { overflow-y:auto; height:600px; }
+
+#div_mon_filt_type span { display:inline-block; padding:2px; margin:1px; }
+span.filt_selected { color:red; }
+
+
+

@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>账本页面样式</title>
+    <script type="text/javascript" src="E:\Study\Jquery\jquery-1.8.2.js"></script>
+    <style type="text/css">
+        body { font-size:small; }
+        
+        #div_user_input_box, #div_latest_items, #div_summary_box
+        {
+            padding:20px 20px 20px 30px; 
+            border: 3px solid #dedede;
+            
+            -moz-border-radius: 15px;      /* Gecko browsers */
+            -webkit-border-radius: 15px;   /* Webkit browsers */
+            border-radius:15px;            /* W3C syntax */
+            
+            -moz-box-shadow:10px 10px 10px gray;
+            -webkit-box-shadow:10px 10px 10px gray;
+            box-shadow:10px 10px 10px gray;
+        }
+        
+        #div_user_input_box { width:230px; height:250px; float:left; margin-left:300px; }
+        #div_summary_box { width:230px; height:250px; float:left; margin-left:30px; }
+        #div_latest_items { width:550px; height:350px; overflow:auto; margin-left:300px; margin-top:50px;}
+        
+        #div_money_type_box { height:30px; }
+        #div_money_type_box span { cursor:pointer; }
+        #div_money_amount_box { height:40px; }
+        #txt_money { width:100px }
+        #div_category_box { height:30px; width:250px; }
+        #div_cost_category_content_box, #div_income_category_content_box { display:inline-block; width:150px; }
+        span.selected { color:Red; font-weight:bold; }
+        #div_category_box span { cursor:pointer; }
+        
+        #div_datetime_box { height:40px; }
+        
+        #txt_remark { width:150px; resize:none; }
+        #div_remark_box label { vertical-align:top; }
+        
+        #div_submit_box { text-align:center; margin-top:10px; }
+        #btn_submit { width:70px; height:30px; }
+
+        #tbl_today_items tr:nth-child(even) { background-color:#F7F7F7; }
+        #tbl_today_items tr { height:25px; }
+        #tbl_today_items tr:nth-child(1) { font-weight:bold; }
+        
+        #div_summary_box div { height:30px; }
+        #div_summary_box div span, #div_summary_box div label { font-weight:bold; }
+        #div_summary_box div:first-child span { color:Green;  }
+        #div_summary_box div:nth-child(2) span { color:Red; }
+        #div_summary_box div:nth-child(3) span { color:Blue;; }
+        #prg_month_budget { width:220px; height:30px; }
+        
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // 添加详细类别列表
+            var costCategoryArr = ["衣", "食", "住", "行", "医"];
+            var incomeCategoryArr = ["工资", "其他"];
+            for (var i = 0; i < costCategoryArr.length; i++) {
+                var itemHtml = "<span val='" + i + "'>[" + costCategoryArr[i] + "]</span><label>&nbsp;&nbsp;</label>";
+                $("#div_cost_category_content_box").append($(itemHtml));
+            }
+            for (var i = 0; i < incomeCategoryArr.length; i++) {
+                var itemHtml = "<span val='" + i + "'>[" + incomeCategoryArr[i] + "]</span><label>&nbsp;&nbsp;</label>";
+                $("#div_income_category_content_box").append($(itemHtml));
+            }
+            // 为详细类别列表项，添加点击事件
+            $("#div_category_box div span").click(function () {
+                $(this).addClass("selected").siblings("span").removeClass("selected");
+            });
+
+            // 为操作类别项，添加点击事件
+            $("#div_money_type_box>span").bind("click", function () {
+                if ($(this).text().indexOf("收入") >= 0) {
+                    $("#div_cost_category_content_box").hide();
+                    $("#div_income_category_content_box").show();
+                    $("#div_income_category_content_box>span:contains('工资')").click();
+                } else {
+                    $("#div_cost_category_content_box").show();
+                    $("#div_income_category_content_box").hide();
+                    $("#div_cost_category_content_box>span:contains('食')").click();
+                }
+                $(this).addClass("selected").siblings("span").removeClass("selected");
+            });
+
+            // 默认选择项
+            $("#div_money_type_box>span:contains('支出')").click();
+
+            // 默认隐藏
+            $("#div_income_category_content_box").hide();
+
+            // 给金额框绑定事件
+            $("#txt_money").bind("change", function () {
+                var num = Number($(this).val());
+                if (num != null && num > 0)
+                    $("#btn_submit").attr("disabled", false);
+            });
+        });
+
+        // 添加一条记录
+        function addNew() {
+            // 从页面抓取数据
+            var type = $("#div_money_type_box>span[class='selected']").attr("val");
+            var amount = $("#txt_money").val();
+            var category = $("#div_category_box>div:visible>span[class='selected']").attr("val");
+            var remark = $("#txt_remark").val();
+            var datetime = $("#input_datetime").val();
+            
+            // 禁用按钮
+            $("#btn_submit").attr("disabled", true);
+            // 添加记录
+            addItemToTodayTbl(type, amount, category, remark, datetime);
+            resetInputBox();
+            // 更新每月结余进度条
+            var newVal = $("#prg_month_budget").val() - 5;
+            $("#prg_month_budget").val(newVal);
+        }
+
+        function addItemToTodayTbl(type, amount, category, remark, datetime) {
+            var itemHtml = "<tr><td>#</td><td>" + (type == "0" ? "支出" : "收入") + "</td><td>" + category + "</td><td>" + amount + "</td><td>" + datetime + "</td><td>" + remark + "</td></tr>";
+            $("#tbl_today_items tr:first").after($(itemHtml));
+        }
+
+        function resetInputBox() {
+            $("#div_money_type_box>span:contains('支出')").click();
+            $("#txt_money").val("0");
+            $("#txt_remark").val("");
+            $("#input_datetime").val("");
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <div id="div_user_input_box">
+            <div id="div_money_type_box">
+                <label>操作：</label>
+                <span val="0">[支出]</span>&nbsp;&nbsp;
+                <span val="1">[收入]</span>
+            </div>
+            <div id="div_money_amount_box">
+                <label>金额：</label>
+                <input id="txt_money" type="number" min="0" required="required" autofocus="true" placeholder="0" value="0" />
+            </div>
+            <div id="div_category_box">
+                <label>类别：</label>
+                <div id="div_cost_category_content_box"></div>
+                <div id="div_income_category_content_box"></div>
+            </div>
+            <div id="div_remark_box">
+                <label>备注：</label>
+                <textarea id="txt_remark" rows="3" cols="150"></textarea>
+            </div>
+            <div id="div_datetime_box">
+                <label>日期：</label>
+                <input id="input_datetime" type="date" />
+            </div>
+            <div id="div_submit_box">
+                <input id="btn_submit" type="button" value="记录" onclick="addNew()" disabled="disabled" />
+            </div>
+        </div>
+        <div id="div_summary_box">
+            <div>
+                <label>本月已收入：</label>
+                <span>1000</span>&nbsp;元
+            </div>
+            <div>
+                <label>本月已支出：</label>
+                <span>1000</span>&nbsp;元
+            </div>
+            <div>
+                <label>本月计划支出进度：</label>
+                <span>400 / 1000</span>&nbsp;元
+                <progress id="prg_month_budget" max="100" value="100"></progress>
+            </div>
+        </div>
+        <div style="height:280px;"></div>
+        <div id="div_latest_items">
+            <h3>今日记录</h3>
+            <table id="tbl_today_items">
+                <tr>
+                    <td style="width:20px;"></td>
+                    <td style="width:50px;">类别</td>
+                    <td style="width:100px;">详细分类</td>
+                    <td style="width:50px;">金额</td>
+                    <td style="width:80px;">时间</td>
+                    <td style="width:150px;">备注</td>
+                </tr>
+            </table>
+            <table id="tbl_yesterday_items">
+            </table>
+        </div>
+    </div>
+</body>
+</html>

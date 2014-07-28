@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="gb2312"?>
+<root>
+  <cost>
+    <item value="1">
+      <name>衣</name>
+      <description></description>
+      <usedtime>0</usedtime>
+    </item>
+    <item value="2">
+      <name>食</name>
+      <description></description>
+      <usedtime>0</usedtime>
+    </item>
+    <item value="3">
+      <name>住</name>
+      <description></description>
+      <usedtime>0</usedtime>
+    </item>
+    <item value="4">
+      <name>行</name>
+      <description></description>
+      <usedtime>0</usedtime>
+    </item>
+    <item value="5">
+      <name>医</name>
+      <description></description>
+      <usedtime>0</usedtime>
+    </item>
+    <item value="6">
+      <name>礼</name>
+      <description></description>
+      <usedtime>0</usedtime>
+    </item>
+    <item value="7">
+      <name>娱</name>
+      <description></description>
+      <usedtime>0</usedtime>
+    </item>
+    <item value="8">
+      <name>讯</name>
+      <description></description>
+      <usedtime>0</usedtime>
+    </item>
+    <item value="9">
+      <name>孝</name>
+      <description></description>
+      <usedtime>0</usedtime>
+    </item>
+    <item value="10">
+      <name>娃</name>
+      <description></description>
+      <usedtime>0</usedtime>
+    </item>
+    <item value="11">
+      <name>借</name>
+      <description></description>
+      <usedtime>0</usedtime>
+    </item>
+    <item value="12">
+      <name>学</name>
+      <description>学习相关</description>
+      <usedtime>0</usedtime>
+    </item>
+    <item value="13">
+      <name>投</name>
+      <description></description>
+      <usedtime>0</usedtime>
+    </item>
+    <item value="14">
+      <name>一</name>
+      <description>一笔帐</description>
+      <usedtime>0</usedtime>
+    </item>
+    <item value="15">
+      <name>其他</name>
+      <description></description>
+      <usedtime>0</usedtime>
+    </item>
+  </cost>
+  <income>
+    <item value="100">
+      <name>薪</name>
+      <description>工资啦，奖金啦等等</description>
+      <usedtime>0</usedtime>
+    </item>
+    <item value="101">
+      <name>贷</name>
+      <description>临时性收入</description>
+      <usedtime>0</usedtime>
+    </item>
+    <item value="102">
+      <name>投</name>
+      <description>投资收益</description>
+      <usedtime>0</usedtime>
+    </item>
+    <item value="103">
+      <name>其他</name>
+      <description></description>
+      <usedtime>0</usedtime>
+    </item>
+  </income>
+</root>

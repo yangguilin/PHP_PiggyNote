@@ -1,0 +1,19 @@
+﻿
+
+/***通用样式***/
+
+/*水平分割线*/
+.flatlyLine { height: 1px; background-color: #ccc; clear: both; }
+/*垂直分割线*/
+.verticalLine { width: 1px; background-color: #ccc; height: 750px; float: left; }
+/*标题字体Div*/
+.titleDiv { height: 40px; font-size: 20px; }
+/*列表提示内容*/
+.showMessageDiv { text-align:center; font-size:16px; font-weight:bold; }
+/*小列表第一列*/
+.smallListFirstColumn { width: 12px; height: 20px; }
+/*链接a去掉下划线*/
+a { text-decoration:none; }
+
+
+
